@@ -1,0 +1,31 @@
+import re
+
+def simple_chatbot(user_input):
+    
+    user_input = user_input.lower()
+
+   
+    rules = {
+        'hello': 'Hi there! How can I help you?',
+        'how are you': 'I am a bot and don\'t have feelings, but thanks for asking!',
+        'bye': 'Goodbye! Have a great day!',
+        'name': 'I am a simple chatbot. You can call me ChatBot.',
+        'default': 'I\'m not sure how to respond to that. Ask me something else!'
+    }
+
+   
+    for pattern, response in rules.items():
+        if re.search(pattern, user_input):
+            return response
+
+   
+    return rules['default']
+
+
+while True:
+    user_input = input("You: ")
+    if user_input.lower() == 'exit':
+        print("ChatBot: Goodbye!")
+        break
+    response = simple_chatbot(user_input)
+    print("ChatBot:", response)
